@@ -1,0 +1,9 @@
+services:
+  bliss-wiki:
+    container_name: bliss-wiki
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./wiki:/app/wiki
+    command: python -m wikmd.wiki
