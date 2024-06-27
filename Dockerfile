@@ -11,3 +11,5 @@ COPY . /app
 
 RUN python -m pip install --upgrade pip
 RUN python -m pip install --editable .[dev]
+
+RUN git config --global --add safe.directory /app/wiki
