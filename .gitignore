@@ -105,3 +105,4 @@ src/wikmd/plugins/draw/drawings/*
 wiki/*
 
 temp/*
+.DS_Store
