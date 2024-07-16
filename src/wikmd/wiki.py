@@ -340,6 +340,16 @@ def add_new():
         return render_template('new.html', upload_path=cfg.images_route,
                                image_allowed_mime=cfg.image_allowed_mime, title=page_name, system=SYSTEM_SETTINGS)
 
+@app.route('/random', methods=['GET'])
+def random():
+    """Redirect to a random page."""
+    all_files = []
+    for root, _, files in os.walk(cfg.wiki_directory):
+        for file in files:
+            if file.endswith(".md"):
+                all_files.append(file)
+    random_file = secrets.choice(all_files)
+    return redirect(url_for("file_page", file_page=random_file[:-3]))
 
 @app.route('/edit/homepage', methods=['POST', 'GET'])
 def edit_homepage():
