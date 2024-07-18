@@ -7,3 +7,11 @@ services:
     volumes:
       - ./wiki:/app/wiki
     command: python -m wikmd.wiki
+
+  cloudflared:
+    container_name: wiki-cloudflared
+    restart: unless-stopped
+    image: cloudflare/cloudflared:latest
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${WIKI_TUNNEL_TOKEN}
